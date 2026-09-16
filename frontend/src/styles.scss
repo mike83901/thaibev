@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap');
+:root {
+  --ink: #18241f;
+  --muted: #68766c;
+  --lime: #a4cc49;
+  --lime-dark: #5f8421;
+  --paper: #fbfaf5;
+  --canvas: #e8eee5;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+body {
+  background: radial-gradient(circle at 15% 15%, #f8fbf1 0, var(--canvas) 42%, #dce6dc 100%);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+button,
+input {
+  font-family: inherit;
+}
+/* You can add global styles to this file, and also import other style files */

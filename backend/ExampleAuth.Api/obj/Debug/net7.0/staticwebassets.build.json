@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "AWyZKpuQ4PYAddYPP/wMGlcKUklFoXDjLxyIn/pLQ+w=",
+  "Source": "ExampleAuth.Api",
+  "BasePath": "_content/ExampleAuth.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

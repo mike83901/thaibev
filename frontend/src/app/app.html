@@ -1,0 +1,84 @@
+<main class="shell">
+  <section class="intro">
+    <p class="eyebrow">EXAMPLE.COM / SECURE ACCESS</p>
+    <h1>Welcome back<span>.</span></h1>
+    <p class="intro-copy">
+      A focused workspace for teams that build with clarity, care, and momentum.
+    </p>
+    <div class="signal"><span></span><span></span><span></span><span></span><span></span></div>
+  </section>
+
+  <section class="panel">
+    @if (screen() === 'welcome') {
+      <div class="welcome-view">
+        <div class="screen-label">IT 02-3</div>
+        <div class="welcome-mark">✓</div>
+        <p class="eyebrow">AUTHENTICATED SESSION</p>
+        <h2>Welcome, {{ username() }}</h2>
+        <p class="supporting">Your identity has been verified with a valid JWT token.</p>
+        <button class="button secondary" type="button" (click)="logout()">ออกจากระบบ</button>
+      </div>
+    } @else {
+      <div class="screen-label">{{ screen() === 'login' ? 'IT 02-1' : 'IT 02-2' }}</div>
+      <div class="form-heading">
+        <p class="eyebrow">{{ screen() === 'login' ? 'SIGN IN' : 'CREATE ACCOUNT' }}</p>
+        <h2>{{ screen() === 'login' ? 'เข้าสู่ระบบ' : 'สมัครสมาชิก' }}</h2>
+      </div>
+      @if (message()) {
+        <p class="notice success">{{ message() }}</p>
+      }
+      @if (error()) {
+        <p class="notice error">{{ error() }}</p>
+      }
+      <form (ngSubmit)="screen() === 'login' ? login() : register()">
+        <label for="username">User</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          autocomplete="username"
+          [ngModel]="username()"
+          (ngModelChange)="username.set($event)"
+          placeholder="your username"
+          required
+        />
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          [ngModel]="password()"
+          (ngModelChange)="password.set($event)"
+          placeholder="••••••••"
+          required
+        />
+        @if (screen() === 'register') {
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            autocomplete="new-password"
+            [ngModel]="confirmPassword()"
+            (ngModelChange)="confirmPassword.set($event)"
+            placeholder="••••••••"
+            required
+          />
+        }
+        <button class="button primary" type="submit" [disabled]="busy()">
+          {{
+            busy() ? 'กำลังดำเนินการ...' : screen() === 'login' ? 'ลงชื่อเข้าใช้งาน' : 'สมัครสมาชิก'
+          }}
+        </button>
+      </form>
+      <button
+        class="link-button"
+        type="button"
+        (click)="screen() === 'login' ? showRegister() : showLogin()"
+      >
+        {{ screen() === 'login' ? 'ยังไม่มีบัญชี? สมัครสมาชิก' : 'มีบัญชีแล้ว? ลงชื่อเข้าใช้งาน' }}
+      </button>
+    }
+  </section>
+</main>
